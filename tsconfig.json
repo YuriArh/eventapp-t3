@@ -26,6 +26,10 @@
     /* Path Aliases */
     "baseUrl": ".",
     "paths": {
+      "~/entities/*": ["./src/app/_fsd/entities/*"],
+      "~/widgets/*": ["./src/app/_fsd/widgets/*"],
+      "~/shared/*": ["./src/app/_fsd/shared/*"],
+      "~/features/*": ["./src/app/_fsd/features/*"],
       "~/*": ["./src/*"]
     }
   },
