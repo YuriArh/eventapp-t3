@@ -1,8 +1,6 @@
-import { AnimatePresence, LayoutGroup } from "framer-motion";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { MainTools } from "~/widgets/MainTools";
 import { CustomMap } from "~/widgets/Map";
-import { EventModal } from "~/widgets/EventModal";
 import { HydrateClient } from "~/trpc/server";
 
 type Props = {
@@ -19,7 +17,6 @@ export default function Home({ params: { locale }, searchParams }: Props) {
         <div className="relative flex h-screen w-screen">
           <MainTools />
           <CustomMap />
-          <EventModal />
         </div>
       </main>
     </HydrateClient>

@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
 import { ThemeButton } from "~/features/Theme";
-import { NewEventButton } from "~/features/NewEvent";
+
+import NewEvent from "~/features/NewEvent";
+import SignIn from "~/features/Auth";
 
 /**
  *
@@ -10,8 +12,9 @@ import { NewEventButton } from "~/features/NewEvent";
 
 export function MainTools() {
   return (
-    <div className="w-fit p-2 flex  rounded-b-3xl absolute bg-default-100 z-10  top-0 left-1/2 transform -translate-x-1/2 gap-3 justify-end">
-      <NewEventButton />
+    <div className="absolute left-1/2 top-0 z-10 flex w-fit -translate-x-1/2 transform justify-end gap-3 rounded-b-3xl bg-default-100 p-2">
+      <NewEvent />
+      <SignIn />
       <ThemeButton />
     </div>
   );
