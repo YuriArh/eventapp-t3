@@ -1,7 +1,6 @@
-import { useDisclosure } from "@nextui-org/react";
+"use client";
 import React from "react";
 import { useNewEventModal } from "../../model";
-
 import { NewEventButton } from "../NewEventButton";
 import { NewEventModal } from "../NewEventModal";
 

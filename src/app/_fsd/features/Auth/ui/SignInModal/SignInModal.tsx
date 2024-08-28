@@ -1,64 +1,89 @@
 "use client";
-import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  type ModalProps,
-} from "@nextui-org/react";
-import { useTranslations } from "next-intl";
-import React from "react";
 
-export const SignInModal = (props: Omit<ModalProps, "children">) => {
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, Input } from "@nextui-org/react";
+import { type UseDisclosureReturn } from "@nextui-org/use-disclosure";
+import { signIn } from "next-auth/react";
+import { useTranslations } from "next-intl";
+import React, { useCallback } from "react";
+import { useForm } from "react-hook-form";
+import { type ISignUp, signUpSchema } from "~/server/api/schemas/authSchema";
+import { api } from "~/trpc/react";
+import { ModalLayout, PasswordInput } from "~/shared/ui";
+
+export const SignInModal = (props: Partial<UseDisclosureReturn>) => {
   const { isOpen, onOpenChange } = props;
 
-  const t = useTranslations();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ISignUp>({
+    resolver: zodResolver(signUpSchema),
+  });
+
+  const { mutateAsync } = api.signUp.signUp.useMutation({
+    onSuccess: () => {
+      console.log("work");
+    },
+  });
+
+  const onSubmit = useCallback(
+    async (data: ISignUp) => {
+      console.log("work");
+      const result = await mutateAsync(data);
+
+      console.log(result);
+    },
+    [mutateAsync],
+  );
+
+  const authLangs = useTranslations("Auth");
 
   return (
-    <Modal
+    <ModalLayout
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       isKeyboardDismissDisabled={true}
+      title={authLangs("Sign in")}
     >
-      <ModalContent>
-        {(onClose) => (
-          <>
-            <ModalHeader className="flex flex-col gap-1">
-              Modal Title
-            </ModalHeader>
-            <ModalBody>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                pulvinar risus non risus hendrerit venenatis. Pellentesque sit
-                amet hendrerit risus, sed porttitor quam.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                pulvinar risus non risus hendrerit venenatis. Pellentesque sit
-                amet hendrerit risus, sed porttitor quam.
-              </p>
-              <p>
-                Magna exercitation reprehenderit magna aute tempor cupidatat
-                consequat elit dolor adipisicing. Mollit dolor eiusmod sunt ex
-                incididunt cillum quis. Velit duis sit officia eiusmod Lorem
-                aliqua enim laboris do dolor eiusmod. Et mollit incididunt nisi
-                consectetur esse laborum eiusmod pariatur proident Lorem eiusmod
-                et. Culpa deserunt nostrud ad veniam.
-              </p>
-            </ModalBody>
-            <ModalFooter>
-              <Button color="danger" variant="light" onPress={onClose}>
-                Close
-              </Button>
-              <Button color="primary" onPress={onClose}>
-                Action
-              </Button>
-            </ModalFooter>
-          </>
-        )}
-      </ModalContent>
-    </Modal>
+      <div className="flex flex-col items-center justify-center gap-y-5">
+        <form
+          className="flex w-full flex-col gap-y-1"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <Input
+            fullWidth
+            placeholder={authLangs("Email")}
+            isClearable
+            {...register("email")}
+          />
+          {errors.email?.message}
+          <Input
+            fullWidth
+            placeholder={"name"}
+            isClearable
+            {...register("name")}
+          />
+          {errors.name?.message}
+          <Input
+            fullWidth
+            placeholder={"name"}
+            isClearable
+            {...register("password")}
+          />
+          {errors.password?.message}
+
+          <Button type="submit">Sign Up</Button>
+        </form>
+        <Button
+          color="primary"
+          onPress={() => signIn("discord")}
+          className="w-2/5"
+        >
+          discord
+        </Button>
+      </div>
+    </ModalLayout>
   );
 };

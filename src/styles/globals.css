@@ -24,6 +24,8 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+
+  @apply text-gray-900 dark:text-gray-100;
 }
 
 @layer utilities {

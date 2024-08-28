@@ -1,14 +1,11 @@
-import _ from "lodash";
 import clsx from "clsx";
+import _ from "lodash";
 import { Inter } from "next/font/google";
-
-import type { ReactNode } from "react";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
-import { Providers } from "../_providers";
 import { NextIntlClientProvider, useMessages } from "next-intl";
-
-import { locales } from "~/config/i18n";
-import { NextUIProvider } from "@nextui-org/react";
+import { getTranslations } from "next-intl/server";
+import type { ReactNode } from "react";
+import { locales } from "../../i18n";
+import { Providers } from "../_providers";
 
 const inter = Inter({ subsets: ["latin"] });
 

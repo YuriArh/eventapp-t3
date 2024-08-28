@@ -1,9 +1,9 @@
 "use client";
-import { compose } from "~/shared/lib";
-import { withTheme } from "./withTheme";
-import { withErrorHandler } from "./withErrorHandler";
 import { TRPCReactProvider } from "~/trpc/react";
 import { EventModalProvider } from "~/entities/Event";
+import { compose } from "~/shared/lib";
+import { withErrorHandler } from "./withErrorHandler";
+import { withTheme } from "./withTheme";
 
 export const Providers = compose([
   withTheme,

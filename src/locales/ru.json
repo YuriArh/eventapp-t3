@@ -5,6 +5,12 @@
     "newEvent": "Новый ивент"
   },
   "Auth": {
-    "Sign in": "Войти"
+    "Sign in": "Войти",
+    "Sign in by discord": "Войти через discord",
+    "Email": "почта",
+    "Password": "пароль"
+  },
+  "ModalBase": {
+    "Close": "Закрыть"
   }
 }

@@ -1,7 +1,7 @@
 import { unstable_setRequestLocale } from "next-intl/server";
-import { MainTools } from "~/widgets/MainTools";
-import { CustomMap } from "~/widgets/Map";
 import { HydrateClient } from "~/trpc/server";
+import { MainTools } from "~/widgets/MainTools";
+import { CustomMap } from "~/features/Map/";
 
 type Props = {
   params: { locale: string };

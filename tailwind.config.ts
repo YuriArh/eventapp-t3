@@ -1,10 +1,15 @@
+import { nextui } from "@nextui-org/react";
 import type { Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
-import { nextui } from "@nextui-org/react";
 
 export default {
   content: [
-    "./src/**/*.tsx",
+    "./src/_fsd/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/_fsd/entities/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/_fsd/widgets/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/_fsd/features/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/_fsd/shared/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -17,6 +22,8 @@ export default {
       fontFamily: {
         sans: ["var(--font-geist-sans)", ...fontFamily.sans],
       },
+      white: "#FFFFFF",
+      black: "#000000",
     },
   },
   themes: {
@@ -35,10 +42,21 @@ export default {
   plugins: [
     nextui({
       prefix: "nextui", // prefix for themes variables
-      addCommonColors: false, // override common colors (e.g. "blue", "green", "pink").
+      addCommonColors: true, // override common colors (e.g. "blue", "green", "pink").
       defaultTheme: "light", // default theme from the themes object
       defaultExtendTheme: "light", // default theme to extend on custom themes
       layout: {}, // common layout tokens (applied to all themes)
+      themes: {
+        light: {
+          layout: {}, // light theme layout tokens
+          colors: {}, // light theme colors
+        },
+        dark: {
+          layout: {}, // dark theme layout tokens
+          colors: {}, // dark theme colors
+        },
+        // ... custom themes
+      },
     }),
   ],
 } satisfies Config;

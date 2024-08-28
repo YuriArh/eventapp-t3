@@ -1,9 +1,7 @@
-"use client";
 import React from "react";
-import { ThemeButton } from "~/features/Theme";
-
-import NewEvent from "~/features/NewEvent";
 import SignIn from "~/features/Auth";
+import NewEvent from "~/features/NewEvent";
+import { ThemeButton } from "~/features/Theme";
 
 /**
  *

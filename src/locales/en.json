@@ -5,6 +5,12 @@
     "newEvent": "New event"
   },
   "Auth": {
-    "Sign in": "Sign in"
+    "Sign in": "Sign in",
+    "Sign in by discord": "Sign in by discord",
+    "Email": "email",
+    "Password": "password"
+  },
+  "ModalBase": {
+    "Close": "Close"
   }
 }

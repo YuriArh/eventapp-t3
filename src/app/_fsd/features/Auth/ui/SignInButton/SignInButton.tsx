@@ -1,4 +1,4 @@
-import { Button, type ButtonProps } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 import type { SignInButtonProps } from "./SignInButton.props";
 

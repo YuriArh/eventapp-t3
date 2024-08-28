@@ -1,13 +1,13 @@
 "use client";
+import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 import {
   Map as RMap,
   GeolocateControl,
   NavigationControl,
 } from "react-map-gl/maplibre";
-import { useMapController } from "../../hooks";
-import { useTheme } from "next-themes";
-import { motion } from "framer-motion";
 import { env } from "~/env";
+import { useMapController } from "../../hooks";
 
 export function CustomMap() {
   const { viewState, handleMove } = useMapController();

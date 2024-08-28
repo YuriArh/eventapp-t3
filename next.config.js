@@ -8,7 +8,7 @@ await import("./src/env.js");
 
 const withNextIntl = createNextIntlPlugin(
   // Specify a custom path here
-  "./src/config/i18n.ts",
+  "./src/i18n.ts",
 );
 
 /** @type {import("next").NextConfig} */
