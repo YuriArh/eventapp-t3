@@ -6,7 +6,9 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig = {
   reactStrictMode: true,
   outputFileTracingIncludes: {
-    "/": ["./node_modules/argon2/prebuilds/linux-x64/*.musl.*"],
+    "/": [
+      `./node_modules/argon2/prebuilds/${process.env.ARGON2_PREBUILDS_GLOB ?? "**"}`,
+    ],
   },
 };
 
