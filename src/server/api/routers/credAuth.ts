@@ -1,5 +1,5 @@
 import { TRPCError } from "@trpc/server";
-import { hash } from "argon2";
+import bcrypt from "bcrypt";
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
@@ -26,7 +26,8 @@ export const credAuthRouter = createTRPCRouter({
         });
       }
 
-      const hashedPassword = await hash(password);
+      const saltRounds = 10;
+      const hashedPassword = await bcrypt.hash(password, saltRounds);
 
       const result = await ctx.db.user.create({
         data: { name, email, password: hashedPassword },

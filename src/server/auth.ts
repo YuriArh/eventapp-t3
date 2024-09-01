@@ -1,5 +1,5 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { verify } from "argon2";
+import bcrypt from "bcrypt";
 import {
   getServerSession,
   type DefaultSession,
@@ -81,7 +81,10 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
-        const isValidPassword = await verify(user.password, creds.password);
+        const isValidPassword = await bcrypt.compare(
+          user.password,
+          creds.password,
+        );
 
         if (!isValidPassword) {
           return null;
