@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
-import { locales } from "../../i18n";
 import { Providers } from "../_providers";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -13,10 +12,6 @@ type Props = {
   children: ReactNode;
   params: { locale: string };
 };
-
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
 
 export async function generateMetadata({
   params: { locale },

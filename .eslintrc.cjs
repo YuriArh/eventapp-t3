@@ -9,7 +9,7 @@ const config = {
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
-    "plugin:@conarti/feature-sliced/recommended"
+    "plugin:@conarti/feature-sliced/recommended",
   ],
   rules: {
     "@typescript-eslint/array-type": "off",
@@ -36,6 +36,8 @@ const config = {
         },
       },
     ],
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-argument": "off",
   },
 };
 module.exports = config;
