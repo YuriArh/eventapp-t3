@@ -5,11 +5,7 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  outputFileTracingIncludes: {
-    "/": [
-      `./node_modules/argon2/prebuilds/${process.env.ARGON2_PREBUILDS_GLOB ?? "**"}`,
-    ],
-  },
+  serverExternalPackages: ["argon2"],
 };
 
 export default withNextIntl(nextConfig);
