@@ -1,5 +1,5 @@
-import { SignIn } from "./ui";
+import { Auth } from "./ui";
 
 export * from "./ui";
 
-export default SignIn;
+export default Auth;

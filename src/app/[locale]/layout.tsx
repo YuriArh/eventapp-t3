@@ -1,6 +1,8 @@
 import clsx from "clsx";
 import _ from "lodash";
 import { Inter } from "next/font/google";
+import { type Session } from "next-auth";
+
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
@@ -11,6 +13,7 @@ const inter = Inter({ subsets: ["latin"] });
 type Props = {
   children: ReactNode;
   params: { locale: string };
+  session?: Session;
 };
 
 export async function generateMetadata({

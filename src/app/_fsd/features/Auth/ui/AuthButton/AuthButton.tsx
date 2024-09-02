@@ -1,8 +1,8 @@
 import { Button } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
-import type { SignInButtonProps } from "./SignInButton.props";
+import type { AuthButtonProps } from "./AuthButton.props";
 
-export const SignInButton = (props: SignInButtonProps) => {
+export const AuthButton = (props: AuthButtonProps) => {
   const { onPress } = props;
 
   const t = useTranslations("Auth");

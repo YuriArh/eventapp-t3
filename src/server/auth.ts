@@ -82,8 +82,8 @@ export const authOptions: NextAuthOptions = {
         }
 
         const isValidPassword = await bcrypt.compare(
-          user.password,
           creds.password,
+          user.password,
         );
 
         if (!isValidPassword) {
@@ -94,6 +94,7 @@ export const authOptions: NextAuthOptions = {
           id: user.id,
           email: user.email,
           username: user.name,
+          message: "Success",
         };
       },
     }),
@@ -107,9 +108,6 @@ export const authOptions: NextAuthOptions = {
      * @see https://next-auth.js.org/providers/github
      */
   ],
-  pages: {
-    signIn: "/login",
-  },
 };
 
 /**

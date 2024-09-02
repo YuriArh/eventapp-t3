@@ -1,4 +1,3 @@
-import { unstable_setRequestLocale } from "next-intl/server";
 import { HydrateClient } from "~/trpc/server";
 import { MainTools } from "~/widgets/MainTools";
 import { CustomMap } from "~/features/Map/";
@@ -8,9 +7,7 @@ type Props = {
   searchParams: Record<string, string> | null | undefined;
 };
 
-export default function Home({ params: { locale }, searchParams }: Props) {
-  unstable_setRequestLocale(locale);
-
+export default function HomePage({ params: { locale }, searchParams }: Props) {
   return (
     <HydrateClient>
       <main>
