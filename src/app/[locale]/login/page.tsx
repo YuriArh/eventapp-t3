@@ -1,12 +1,12 @@
 "use client";
 
+import { Button } from "@nextui-org/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useLocale, useTranslations } from "next-intl";
 import { FormEvent, useState } from "react";
 import { PageLayout } from "~/shared/ui";
-import Link from "next/link";
-import { Button } from "@nextui-org/react";
 
 export default function Login() {
   const locale = useLocale();

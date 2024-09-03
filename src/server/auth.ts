@@ -40,11 +40,23 @@ declare module "next-auth" {
  */
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    session: ({ session, user }) => ({
+    jwt: async ({ token, user }) => {
+      if (user) {
+        token.id = user.id;
+        token.email = user.email;
+        token.name = user.name;
+      }
+
+      return token;
+    },
+    session: ({ session, token }) => ({
       ...session,
       user: {
         ...session.user,
-        id: user.id,
+        id: token.id,
+        email: token.email,
+        name: token.name, // Добавляем имя в сессию
+        role: token.role,
       },
     }),
   },
@@ -78,26 +90,27 @@ export const authOptions: NextAuthOptions = {
         });
 
         if (!user) {
-          return null;
+          throw new Error("User not found");
         }
 
         const isValidPassword = await bcrypt.compare(
           creds.password,
-          user.password || "",
+          user.password ?? "",
         );
 
         if (!isValidPassword) {
-          return null;
+          throw new Error("Invalid password");
         }
 
         return {
           id: user.id,
           email: user.email,
-          username: user.name,
+          name: user.name,
           message: "Success",
         };
       },
     }),
+
     /**
      * ...add more providers here.
      *
@@ -108,6 +121,9 @@ export const authOptions: NextAuthOptions = {
      * @see https://next-auth.js.org/providers/github
      */
   ],
+  session: {
+    strategy: "jwt",
+  },
 };
 
 /**

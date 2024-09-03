@@ -8,7 +8,8 @@
     "Sign in": "Sign in",
     "Sign in by discord": "Sign in by discord",
     "Email": "email",
-    "Password": "password"
+    "Password": "password",
+    "Sign out": "Sign Out"
   },
   "ModalBase": {
     "Close": "Close"

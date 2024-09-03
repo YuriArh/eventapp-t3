@@ -8,7 +8,8 @@
     "Sign in": "Войти",
     "Sign in by discord": "Войти через discord",
     "Email": "почта",
-    "Password": "пароль"
+    "Password": "пароль",
+    "Sign out": "Выйти"
   },
   "ModalBase": {
     "Close": "Закрыть"

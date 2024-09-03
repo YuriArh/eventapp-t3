@@ -4,5 +4,6 @@ import React from "react";
 
 export const ProfileLink = () => {
   const { data } = useSession();
+
   return <Link>{data?.user.name}</Link>;
 };
