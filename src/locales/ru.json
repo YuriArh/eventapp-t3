@@ -13,5 +13,9 @@
   },
   "ModalBase": {
     "Close": "Закрыть"
+  },
+  "LocaleSwitcher": {
+    "label": "Смените язык",
+    "locale": "{locale, select, ru {🇷🇺 Russian} en {🇺🇸 English} other {Unknown}}"
   }
 }
