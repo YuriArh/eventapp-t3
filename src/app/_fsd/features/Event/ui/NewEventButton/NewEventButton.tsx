@@ -1,20 +1,19 @@
 "use client";
 import { Button } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
-
-import type { NewEventButtonProps } from "./SignInButton.props";
+import { useNewEventModal } from "../../model";
 
 /**
  *
  * @returns {ReactNode} button to create a new event
  */
 
-export function NewEventButton(props: NewEventButtonProps) {
-  const { onPress } = props;
+export function NewEventButton() {
+  const { openNewEventModal } = useNewEventModal();
   const t = useTranslations();
 
   return (
-    <Button color="primary" size="sm" onPress={onPress}>
+    <Button color="primary" size="sm" onPress={openNewEventModal}>
       {t("LocaleLayout.newEvent")}
     </Button>
   );

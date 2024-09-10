@@ -1,15 +1,15 @@
 "use client";
 
-import { ProfileLink } from "~/features/Profile";
+import { User } from "@nextui-org/react";
 import { useAuthModel } from "../../model";
 import { AuthButton } from "../AuthButton";
 import { AuthModal } from "../AuthModal";
 
 export const Auth = () => {
-  const { onOpen, isOpen, onOpenChange, status } = useAuthModel();
+  const { onOpen, isOpen, onOpenChange, status, data } = useAuthModel();
 
   if (status === "authenticated") {
-    return <ProfileLink />;
+    return <User name={data?.user.name} />;
   }
 
   return (

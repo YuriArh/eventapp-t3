@@ -8,6 +8,5 @@ export function withSession({
   children: JSX.Element;
   session?: Session;
 }) {
-  console.log(session);
   return <SessionProvider session={session}>{children}</SessionProvider>;
 }

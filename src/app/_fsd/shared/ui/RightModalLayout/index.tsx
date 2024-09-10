@@ -1,41 +1,16 @@
-"use client";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
-import { type MouseEventHandler, useCallback, useEffect, useRef } from "react";
+import { forwardRef } from "react";
+import { type RightModalLayoutProps } from "./RightModalLayout.types";
 
-export function RightModalLayout({ children }: { children: React.ReactNode }) {
-  const overlay = useRef(null);
-  const wrapper = useRef(null);
-  const router = useRouter();
-
-  const onDismiss = useCallback(() => {
-    router.back();
-  }, [router]);
-
-  const onClick: MouseEventHandler = useCallback(
-    (e) => {
-      if (e.target === overlay.current || e.target === wrapper.current) {
-        if (onDismiss) onDismiss();
-      }
-    },
-    [onDismiss, overlay, wrapper],
-  );
-
-  const onKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key === "Escape") onDismiss();
-    },
-    [onDismiss],
-  );
-
-  useEffect(() => {
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [onKeyDown]);
+export const RightModalLayout = forwardRef<
+  HTMLDivElement,
+  RightModalLayoutProps
+>((props, ref) => {
+  const { onClick, children } = props;
 
   return (
     <motion.div
-      ref={overlay}
+      ref={ref}
       className="z-10 flex w-1/4 flex-initial rounded-l-lg bg-content2 shadow-[-10px_0_50px_-15px_rgba(0,0,0,0.3)]"
       onClick={onClick}
       initial={{ x: 300 }}
@@ -45,4 +20,6 @@ export function RightModalLayout({ children }: { children: React.ReactNode }) {
       {children}
     </motion.div>
   );
-}
+});
+
+RightModalLayout.displayName = "RightModalLayout";
