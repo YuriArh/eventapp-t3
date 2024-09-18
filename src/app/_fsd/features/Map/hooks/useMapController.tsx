@@ -1,6 +1,5 @@
 import { useCallback, useLayoutEffect, useState } from "react";
 import type { ViewStateChangeEvent } from "react-map-gl/maplibre";
-import { useMapViewModel } from "./useMapViewModel";
 
 /**
  * Controller for Map
@@ -31,7 +30,7 @@ export function useMapController() {
 
         (error) => {
           console.error("Error get user location: ", error);
-        }
+        },
       );
     } else {
       console.log("Geolocation is not supported by this browser.");

@@ -15,7 +15,11 @@ export function CustomMap() {
   const { theme } = useTheme();
 
   return (
-    <motion.div layout="size" className="flex-auto">
+    <motion.div
+      layout="size"
+      className="flex-auto"
+      transition={{ duration: 0.5 }}
+    >
       <RMap
         {...viewState}
         style={{ flex: 1 }}
@@ -25,8 +29,8 @@ export function CustomMap() {
         onMove={handleMove}
         initialViewState={{ zoom: 14 }}
       >
-        <GeolocateControl />
-        <NavigationControl />
+        <GeolocateControl position="bottom-left" />
+        <NavigationControl position="top-left" />
       </RMap>
     </motion.div>
   );

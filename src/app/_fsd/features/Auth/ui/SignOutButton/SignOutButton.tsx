@@ -8,7 +8,6 @@ import React from "react";
 export const SignOutButton = () => {
   const t = useTranslations("Auth");
   const { status } = useSession();
-  console.log(status);
 
   return (
     <Button

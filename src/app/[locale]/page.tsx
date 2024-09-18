@@ -12,7 +12,7 @@ export default function HomePage({ params: { locale }, searchParams }: Props) {
   return (
     <HydrateClient>
       <main>
-        <div className="relative flex h-screen w-screen">
+        <div className="relative flex h-screen w-screen overflow-hidden">
           <MainTools />
           <CustomMap />
           <NewEventModal />
