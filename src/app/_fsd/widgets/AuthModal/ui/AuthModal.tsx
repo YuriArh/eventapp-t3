@@ -1,20 +1,16 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Card, CardBody, Input, Tab, Tabs } from "@nextui-org/react";
-import { type UseDisclosureReturn } from "@nextui-org/use-disclosure";
+import { Button, Tab, Tabs } from "@nextui-org/react";
 import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";
-import React, { useCallback } from "react";
-import { useForm } from "react-hook-form";
-import { type ISignUp, signUpSchema } from "~/server/api/schemas/authSchema";
-import { api } from "~/trpc/react";
-import { ModalLayout, PasswordInput } from "~/shared/ui";
-import { SignInForm } from "../SignInForm";
-import { SignUpForm } from "../SignUpForm";
+import React from "react";
+import { SignInForm, SignUpForm } from "~/features/Auth";
+import { SIGN_IN_MODAL } from "~/shared/constants/AuthConstants";
+import { useQueryModal } from "~/shared/hooks/useQueryModal";
+import { ModalLayout } from "~/shared/ui";
 
-export const AuthModal = (props: Partial<UseDisclosureReturn>) => {
-  const { isOpen, onOpenChange } = props;
+export const AuthModal = () => {
+  const { isOpen, onDismiss } = useQueryModal({ modalQuery: SIGN_IN_MODAL });
 
   const tabs = [
     {
@@ -31,10 +27,16 @@ export const AuthModal = (props: Partial<UseDisclosureReturn>) => {
 
   const authLangs = useTranslations("Auth");
 
+  const handleOpenChange = (isOpen: boolean) => {
+    if (!isOpen) {
+      onDismiss();
+    }
+  };
+
   return (
     <ModalLayout
       isOpen={isOpen}
-      onOpenChange={onOpenChange}
+      onOpenChange={handleOpenChange}
       isKeyboardDismissDisabled={true}
       title={authLangs("Sign in")}
     >

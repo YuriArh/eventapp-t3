@@ -1,4 +1,4 @@
-export { Auth } from "./Auth";
 export { SignOutButton } from "./SignOutButton";
-
-export * from "./AuthButton";
+export { SignInForm } from "./SignInForm";
+export { SignUpForm } from "./SignUpForm";
+export { AuthButton } from "./AuthButton";

@@ -1,1 +1,0 @@
-export { NewEvent } from "./NewEvent";

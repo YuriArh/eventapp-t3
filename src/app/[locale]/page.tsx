@@ -1,4 +1,5 @@
 import { HydrateClient } from "~/trpc/server";
+import { AuthModal } from "~/widgets/AuthModal";
 import { MainTools } from "~/widgets/MainTools";
 import { NewEventModal } from "~/widgets/NewEventModal";
 import { CustomMap } from "~/features/Map/";
@@ -16,6 +17,7 @@ export default function HomePage({ params: { locale }, searchParams }: Props) {
           <MainTools />
           <CustomMap />
           <NewEventModal />
+          <AuthModal/>
         </div>
       </main>
     </HydrateClient>

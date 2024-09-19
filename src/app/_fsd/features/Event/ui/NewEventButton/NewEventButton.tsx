@@ -1,19 +1,21 @@
 "use client";
 import { Button } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
-import { useNewEventModal } from "../../model";
+import { useQueryModal } from "~/shared/hooks/useQueryModal";
+import { NEW_EVENT_MODAL_QUERY } from "../../constants";
 
 /**
+ * Returns a button component that triggers the opening of a new event modal.
  *
- * @returns {ReactNode} button to create a new event
+ * @return {ReactNode} The button component.
  */
 
 export function NewEventButton() {
-  const { openNewEventModal } = useNewEventModal();
+  const { openModal } = useQueryModal({modalQuery: NEW_EVENT_MODAL_QUERY});
   const t = useTranslations();
 
   return (
-    <Button color="primary" size="sm" onPress={openNewEventModal}>
+    <Button color="primary" size="sm" onPress={openModal}>
       {t("LocaleLayout.newEvent")}
     </Button>
   );

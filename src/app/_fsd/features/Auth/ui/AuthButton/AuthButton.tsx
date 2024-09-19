@@ -1,14 +1,18 @@
+'use client'
+
 import { Button } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
-import type { AuthButtonProps } from "./AuthButton.props";
+import { SIGN_IN_MODAL } from "~/shared/constants/AuthConstants";
+import { useQueryModal } from "~/shared/hooks/useQueryModal";
 
-export const AuthButton = (props: AuthButtonProps) => {
-  const { onPress } = props;
+
+export const AuthButton = () => {
+  const {openModal} = useQueryModal({ modalQuery: SIGN_IN_MODAL });
 
   const t = useTranslations("Auth");
 
   return (
-    <Button color="secondary" size="sm" onPress={onPress}>
+    <Button color="secondary" size="sm" onPress={openModal}>
       {t("Sign in")}
     </Button>
   );
