@@ -5,14 +5,12 @@ import { routing } from "./i18n/routing";
 
 const publicPages = ["/", "/login"];
 
-const handleI18nRouting = createMiddleware(routing);
-
 const authMiddleware = withAuth(
   // Note that this callback is only invoked if
   // the `authorized` callback has returned `true`
   // and not for pages listed in `pages`.
   function onSuccess(req) {
-    return handleI18nRouting(req);
+    return;
   },
   {
     callbacks: {
@@ -34,7 +32,7 @@ export default function middleware(req: NextRequest) {
   const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
 
   if (isPublicPage) {
-    return handleI18nRouting(req);
+    return;
   } else {
     return (authMiddleware as any)(req);
   }

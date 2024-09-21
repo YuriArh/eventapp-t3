@@ -2,10 +2,10 @@
 
 import { Select, SelectItem } from "@nextui-org/react";
 import { useLocale, useTranslations } from "next-intl";
-import React, { useState } from "react";
+import React from "react";
+import { setUserLocale } from "~/app/_fsd/services/locale";
+import { Locale } from "~/i18n/config";
 import { routing, usePathname, useRouter } from "~/i18n/routing";
-
-type Locale = "en" | "ru";
 
 const LangSelector = () => {
   const router = useRouter();
@@ -17,7 +17,7 @@ const LangSelector = () => {
   const handleLocaleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedLocale = event.target.value as Locale;
 
-    router.replace(pathname, { locale: selectedLocale });
+    setUserLocale(selectedLocale);
   };
 
   return (
