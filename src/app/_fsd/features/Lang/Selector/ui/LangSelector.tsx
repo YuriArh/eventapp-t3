@@ -3,7 +3,7 @@
 import { Select, SelectItem } from "@nextui-org/react";
 import { useLocale, useTranslations } from "next-intl";
 import React from "react";
-import { setUserLocale } from "~/app/_fsd/services/locale";
+import { setUserLocale } from "~/shared/services/locale";
 import { Locale } from "~/i18n/config";
 import { routing, usePathname, useRouter } from "~/i18n/routing";
 

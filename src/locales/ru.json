@@ -17,5 +17,8 @@
   "LocaleSwitcher": {
     "label": "Смените язык",
     "locale": "{locale, select, ru {🇷🇺 Russian} en {🇺🇸 English} other {Unknown}}"
+  },
+  "NewEvent": {
+    "Title": "Создайте новый ивент"
   }
 }

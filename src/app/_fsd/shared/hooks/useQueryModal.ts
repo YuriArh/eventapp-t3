@@ -2,11 +2,11 @@
 
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
-import { useRouter } from "~/i18n/routing";
 import {
-  type useQueryModalReturn,
-  type useQueryModalOptions,
+  type UseQueryModalReturn,
+  type UseQueryModalOptions,
 } from "./useQueryModal.types";
+import { useRouter } from "~/i18n/routing";
 
 /**
  * Hook to control a modal window by query string parameter.
@@ -15,8 +15,8 @@ import {
  * @returns {{ isOpen: boolean, openModal: () => void, onClick: (event: React.MouseEvent<Element, MouseEvent>) => void, onDismiss: () => void }}
  */
 export const useQueryModal = (
-  options: useQueryModalOptions,
-): useQueryModalReturn => {
+  options: UseQueryModalOptions,
+): UseQueryModalReturn => {
   const { overlay = null, wrapper = null, modalQuery } = options;
   const searchParams = useSearchParams();
   const router = useRouter();
